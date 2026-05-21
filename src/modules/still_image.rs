@@ -73,8 +73,8 @@ use macroquad::texture::Texture2D;
 
 pub struct StillImage {
     texture: Texture2D,
-    x: f32,
-    y: f32,
+    pub x: f32,
+    pub y: f32,
     width: f32,
     height: f32,
     transparency_mask: Option<Vec<u8>>, // Changed to Option<Vec<u8>> to make it optional

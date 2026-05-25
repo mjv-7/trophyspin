@@ -25,10 +25,12 @@ fn window_conf() -> Conf {
 
 #[macroquad::main(window_conf)]
 async fn main() {
+    let wins = 2.0;
     let center_x = 640.0;
     let center_y = 480.0;
     let radius: f32 = 300.0;
     let mut angle: f32 = 0.0;
+    let speed = 0.02;
     let mut x = 0.0;
     let mut y = 0.0;
     let img_dot = StillImage::new("assets/black.png", 5.0, 5.0, 640.0, 480.0, true, 1.0).await;
@@ -36,14 +38,16 @@ async fn main() {
     loop {
         clear_background(WHITE);
         draw_grid(50.0, BLACK);
+        angle += speed;
         img_trophy.set_angle(angle);
-        angle -= 0.001;
         img_trophy.set_position(Vec2::new(x, y));
         x = center_x + angle.cos() * radius;
         y = center_y + angle.sin() * radius;
-
         img_trophy.draw();
         img_dot.draw();
+        for i in 0..wins{
+           let new_x = x + 1.0 * wins
+        }
 
         next_frame().await;
     }
